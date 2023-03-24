@@ -39,7 +39,7 @@ func wsHandler(ctx *gin.Context) {
 		Ctx:              ctx2,
 		Cancel:           cancel,
 	}
-
+	//其实就是每次websocket链接去go一个go程 对这个conn去读写数据
 	go wsClient.Write(ctx2, namespace, podName, containerName)
 	go wsClient.KeepAlive(ctx2)
 
